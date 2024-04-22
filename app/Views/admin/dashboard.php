@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -10,80 +9,18 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css?v=3.2.0">
-    <script nonce="02db637e-353e-4efa-aacc-17771ef5e076">
-        try {
-            (function(w, d) {
-                ! function(j, k, l, m) {
-                    j[l] = j[l] || {};
-                    j[l].executed = [];
-                    j.zaraz = {
-                        deferred: [],
-                        listeners: []
-                    };
-                    j.zaraz._v = "5592";
-                    j.zaraz.q = [];
-                    j.zaraz._f = function(n) {
-                        return async function() {
-                            var o = Array.prototype.slice.call(arguments);
-                            j.zaraz.q.push({
-                                m: n,
-                                a: o
-                            })
-                        }
-                    };
-                    for (const p of ["track", "set", "debug"]) j.zaraz[p] = j.zaraz._f(p);
-                    j.zaraz.init = () => {
-                        var q = k.getElementsByTagName(m)[0],
-                            r = k.createElement(m),
-                            s = k.getElementsByTagName("title")[0];
-                        s && (j[l].t = k.getElementsByTagName("title")[0].text);
-                        j[l].x = Math.random();
-                        j[l].w = j.screen.width;
-                        j[l].h = j.screen.height;
-                        j[l].j = j.innerHeight;
-                        j[l].e = j.innerWidth;
-                        j[l].l = j.location.href;
-                        j[l].r = k.referrer;
-                        j[l].k = j.screen.colorDepth;
-                        j[l].n = k.characterSet;
-                        j[l].o = (new Date).getTimezoneOffset();
-                        if (j.dataLayer)
-                            for (const w of Object.entries(Object.entries(dataLayer).reduce(((x, y) => ({
-                                    ...x[1],
-                                    ...y[1]
-                                })), {}))) zaraz.set(w[0], w[1], {
-                                scope: "page"
-                            });
-                        j[l].q = [];
-                        for (; j.zaraz.q.length;) {
-                            const z = j.zaraz.q.shift();
-                            j[l].q.push(z)
-                        }
-                        r.defer = !0;
-                        for (const A of [localStorage, sessionStorage]) Object.keys(A || {}).filter((C => C.startsWith("_zaraz_"))).forEach((B => {
-                            try {
-                                j[l]["z_" + B.slice(7)] = JSON.parse(A.getItem(B))
-                            } catch {
-                                j[l]["z_" + B.slice(7)] = A.getItem(B)
-                            }
-                        }));
-                        r.referrerPolicy = "origin";
-                        r.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(j[l])));
-                        q.parentNode.insertBefore(r, q)
-                    };
-                    ["complete", "interactive"].includes(k.readyState) ? zaraz.init() : j.addEventListener("DOMContentLoaded", zaraz.init)
-                }(w, d, "zarazData", "script");
-            })(window, document)
-        } catch (e) {
-            throw fetch("/cdn-cgi/zaraz/t"), e;
-        };
-    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js?v=3.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -94,11 +31,12 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/favicon.ico" class="img-circle elevation-2" alt="User Image">
+                        <!-- <img src="/favicon.ico" class="img-circle elevation-2" alt="User Image"> -->
+                        <?= session('username') ?> &nbsp; <i class="fas fa-user mr-2"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a href="#" class="dropdown-item">
-                            <i class="fas fa-user-cog mr-2"></i> Change Password
+                            <i class="fas fa-lock mr-2"></i> Change Password
                         </a>
                         <a href="#" class="dropdown-item">
                             <i class="fas fa-user-edit mr-2"></i> View Profile
@@ -112,7 +50,6 @@
             </ul>
         </nav>
 
-
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
             <a href="index3.html" class="brand-link">
@@ -122,6 +59,7 @@
 
             <div class="sidebar">
                 <br>
+
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -170,13 +108,10 @@
                         </li>
                     </ul>
                 </nav>
-
             </div>
-
         </aside>
 
         <div class="content-wrapper">
-
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -192,7 +127,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="content">
                 <div class="container-fluid">
@@ -244,41 +178,26 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
         </div>
 
         <footer class="main-footer">
-
             <div class="float-right d-none d-sm-inline">
                 Anything you want
             </div>
-
-            <strong>Copyright &copy; 2024 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
         </footer>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js?v=3.2.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             $('#logoutBtn').on('click', function() {
-                // Get the token from the session
-                var token = '<?php echo $_SESSION["token"]; ?>';
-
                 // Make an AJAX request to logout endpoint
                 $.ajax({
                     url: '/api/logout',
-                    type: 'POST',
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    },
+                    type: 'GET',
                     success: function(response) {
                         Swal.fire({
                             title: 'Success!',
